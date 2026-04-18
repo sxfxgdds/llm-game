@@ -1,0 +1,44 @@
+# Naming Game Experiment Configuration
+# =====================================
+
+# Agent parameters
+agents:
+  n_agents: 24
+  history_length: 3
+
+# Vocabulary
+vocabulary:
+  n_names: 10
+  use_nonce_names: false
+  nonce_seed: 0
+
+# Experiment settings
+experiment:
+  n_rounds: 200
+  n_runs: 10
+  seed: 12345
+
+# Ablation conditions to run
+# Options: scored, structure_only, no_score_in_history, no_score_no_goal
+conditions:
+  - scored
+  - structure_only
+  - no_score_in_history
+  - no_score_no_goal
+
+# LLM settings
+llm:
+  preset: gpt4o-mini  # or: qwen7b, yi6b, etc.
+  # backend: openai  # Alternative: specify backend + model directly
+  # model: gpt-4o-mini
+  temperature: 0.3
+  max_tokens: 8
+
+# Output settings
+output:
+  outdir: results/naming_game
+  save_per_round: true
+  save_summary: true
+
+# Logging
+verbosity: 1  # 0=quiet, 1=normal, 2=detailed, 3=debug

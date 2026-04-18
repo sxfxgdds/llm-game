@@ -1,0 +1,41 @@
+# Prior Probe Experiment Configuration
+# =====================================
+
+# Agent parameters
+agents:
+  n_agents: 10
+
+# Experiment settings
+experiment:
+  n_runs: 3
+  seed: 0
+
+# Probe settings
+probe:
+  show_goal: false
+  score_mode: full_string  # full_string or first_token
+  system_prelude: "You are an expert cooperative agent."
+
+# Vocabulary
+vocabulary:
+  n_names: 10
+
+# Model settings
+models:
+  # Single model
+  preset: qwen7b
+  
+  # Multiple models (for mixed experiments)
+  # presets:
+  #   - qwen7b
+  #   - yi6b
+  #   - tinyllama
+  
+  mixed: false  # Set true for multi-model experiments
+
+# Output settings
+output:
+  outdir: results/prior_probe
+
+# Logging
+verbosity: 1

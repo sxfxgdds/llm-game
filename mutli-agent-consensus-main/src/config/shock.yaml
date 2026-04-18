@@ -1,0 +1,48 @@
+# Shock Experiment Configuration
+# ===============================
+
+# Agent parameters
+agents:
+  n_agents: 24
+  history_length: 3
+
+# Experiment settings
+experiment:
+  n_rounds: 200
+  n_runs: 10
+  seed: 12345
+
+# Shock settings
+shock:
+  shock_at: 0.5       # Fraction (0-1) or absolute round (>=1)
+  flip_goal: true     # Flip goal text post-shock
+
+# Conditions to run
+conditions:
+  - scored
+  - structure_only
+  - no_score_in_history
+  - no_score_no_goal
+
+# Re-coordination metrics
+recoordination:
+  threshold: 0.8
+  streak: 3
+  bin_size: 24  # 0 = use n_agents
+
+# Vocabulary
+vocabulary:
+  n_names: 10
+
+# LLM settings
+llm:
+  preset: gpt4o-mini
+  temperature: 0.3
+  max_tokens: 8
+
+# Output settings
+output:
+  outdir: results/shock
+
+# Logging
+verbosity: 1

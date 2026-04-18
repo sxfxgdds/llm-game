@@ -1,0 +1,50 @@
+# Mixed-model (heterogeneous cohort) experiment configuration
+# Runs naming game with multiple LLM models in the same population
+
+experiment: mixed_models
+
+# Cohort composition: which models and their fractions
+cohort:
+  composition:
+    - preset: gpt4o-mini
+      fraction: 0.5
+    - preset: gemini-flash
+      fraction: 0.5
+
+# Game parameters
+game:
+  W: 10                    # Number of distinct names/labels
+  N: 24                    # Number of agents (must be even)
+  H: 6                     # History length
+  rounds: 200              # Rounds per run
+  temperature: 1.0         # Sampling temperature
+  prompt_variant: scored   # scored, structure_only, no_score, no_goal, no_history
+
+# Model/provider settings
+models:
+  presets:
+    - gpt4o-mini
+    - gemini-flash
+
+provider_args:
+  openai:
+    max_tokens: 10
+    timeout_s: 30
+    retries: 3
+  gemini:
+    max_tokens: 10
+    timeout_s: 30
+    retries: 3
+
+# Run configuration
+run:
+  out_dir: results/mixed_models
+  run_name: null           # Auto-generate if null
+  seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  repeats_per_seed: 1
+
+# Logging
+logging:
+  store_prompts: false
+  store_raw_responses: false
+  verbosity: 1
